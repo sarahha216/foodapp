@@ -7,7 +7,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +41,7 @@ public class UsernamePasswordFragment extends Fragment {
     FirebaseAuth fAuth;
     FirebaseDatabase fDatabase;
     String userID;
+    NavController navController;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -90,11 +94,15 @@ public class UsernamePasswordFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(view);
         fAuth = FirebaseAuth.getInstance();
         fDatabase = FirebaseDatabase.getInstance();
 
         tvEmail = view.findViewById(R.id.tvEmail);
         tvPassword = view.findViewById(R.id.tvPassword);
+        tvConfirmPassword = view.findViewById(R.id.tvConfirmPassword);
+
         btnRegister = view.findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(v -> {
 
@@ -107,56 +115,62 @@ public class UsernamePasswordFragment extends Fragment {
             String mobile = getArguments().getString("mobile");
             String email = tvEmail.getText().toString();
             String password = tvPassword.getText().toString();
+            String confiemPassword = tvConfirmPassword.getText().toString();
 
-            fAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isComplete()){
-                                userID = fAuth.getCurrentUser().getUid();
-                                DatabaseReference databaseReference = fDatabase.getReference();
+            if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(confiemPassword)){
+                if(password.equals(confiemPassword)){
+                    fAuth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+//                                        Intent intent = new Intent(getContext(), SignInActivity.class);
+//                                        intent.putExtra("email", email);
+//                                        getActivity().setResult(Activity.RESULT_OK, intent);
+//                                        getActivity().finish();
+//                                        startActivity(intent);
+                                        userID = fAuth.getCurrentUser().getUid();
+                                        DatabaseReference databaseReference = fDatabase.getReference();
 
-                                Map<String,Object> user = new HashMap<>();
-                                user.put("firstname",firstname);
-                                user.put("lastname",lastname);
-                                user.put("address",address);
-                                user.put("email",email);
-                                user.put("mobile", mobile);
-//                                user.put("latitude", latitude);
-//                                user.put("longitude", longitude);
-                                Intent intent = new Intent(getContext(), SignInActivity.class);
-                                databaseReference.child("users").child(userID).setValue(user)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Toast.makeText(getContext(), "OKE", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(getContext(), SignInActivity.class);
-//                                                intent.putExtra("email", email);
-//                                                getActivity().setResult(Activity.RESULT_OK, intent);
-//                                                getActivity().finish();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Map<String,Object> user = new HashMap<>();
+                                        user.put("firstname",firstname);
+                                        user.put("lastname",lastname);
+                                        user.put("address",address);
+                                        user.put("email",email);
+                                        user.put("mobile", mobile);
+                                        databaseReference.child("users").child(userID).setValue(user)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Toast.makeText(getContext(), "OKE", Toast.LENGTH_SHORT).show();
+                                                        Intent intent = new Intent(getContext(), SignInActivity.class);
+                                                        intent.putExtra("email", email);
+                                                        getActivity().setResult(Activity.RESULT_OK, intent);
+                                                        getActivity().finish();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                                            }
-                                        });
-                                intent.putExtra("email", email);
-                                getActivity().setResult(Activity.RESULT_OK, intent);
-                                getActivity().finish();
-                                startActivity(intent);
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
+                                                    }
+                                                });
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
+                }else {
+                    Toast.makeText(getContext(), "Vui lòng nhâp lại khóp mật khẩu", Toast.LENGTH_SHORT).show();
+                }
+
+            }else {
+                Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

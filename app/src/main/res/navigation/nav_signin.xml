@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/fullnameFragment"
         android:name="vn.edu.huflit.hmt_19dh110405.FullnameFragment"
-        android:label="fragment_fullname"
-        tools:layout="@layout/fragment_fullname" >
+        android:label="@string/text_fullname"
+        tools:layout="@layout/fragment_fullname">
         <action
             android:id="@+id/action_fullnameFragment_to_addressFragment"
             app:destination="@id/addressFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/addressFragment"
         android:name="vn.edu.huflit.hmt_19dh110405.AddressFragment"
-        android:label="fragment_address"
-        tools:layout="@layout/fragment_address" >
+        android:label="@string/text_address"
+        tools:layout="@layout/fragment_address">
         <action
             android:id="@+id/action_addressFragment_to_usernamePasswordFragment"
             app:destination="@id/usernamePasswordFragment" />
@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/usernamePasswordFragment"
         android:name="vn.edu.huflit.hmt_19dh110405.UsernamePasswordFragment"
-        android:label="fragment_username_password"
+        android:label="@string/text_email"
         tools:layout="@layout/fragment_username_password" />
 </navigation>

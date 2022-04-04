@@ -21,7 +21,8 @@ public class SignInActivity extends AppCompatActivity {
     TextView txt_forgot, txt_fb, txt_gg;
     EditText edt_email, edt_password;
     Button btn_signIn, btn_signUp;
-    private FirebaseAuth mAuth;
+    Intent intent;
+    private FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,10 @@ public class SignInActivity extends AppCompatActivity {
         btn_signIn = findViewById(R.id.btn_signIn);
         btn_signUp = findViewById(R.id.btn_signUp);
 
-        Intent intent = getIntent();
+        intent = getIntent();
         edt_email.setText(intent.getStringExtra("email"));
         // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
         btn_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +70,7 @@ public class SignInActivity extends AppCompatActivity {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }else {
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
@@ -82,5 +83,22 @@ public class SignInActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String email = intent.getStringExtra("email");
+        if (fAuth.getCurrentUser() != null && TextUtils.isEmpty(email)){
+            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

@@ -29,4 +29,9 @@ public class SignUpActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController( toolbar,navController);
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
