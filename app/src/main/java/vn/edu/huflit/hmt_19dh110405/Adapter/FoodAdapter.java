@@ -65,7 +65,7 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(viewHolderFood.ivImage.getContext()).load(uri).into(viewHolderFood.ivImage);
+                Picasso.get().load(uri).into(viewHolderFood.ivImage);
             }
         });
         viewHolderFood.tvName.setText(food.getName());

@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                tvName.setText(user.getFirstName()+" "+user.getLastName());
+                tvName.setText(user.getFirstname()+" "+user.getLastname());
                 tvEmail.setText(user.getEmail());
             }
 

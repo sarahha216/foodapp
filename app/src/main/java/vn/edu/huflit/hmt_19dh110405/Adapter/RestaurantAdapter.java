@@ -93,7 +93,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.with(viewHolderRestaurant.ivImage.getContext()).load(uri).into(viewHolderRestaurant.ivImage);
+                    Picasso.get().load(uri).into(viewHolderRestaurant.ivImage);
                 }
             });
             viewHolderRestaurant.tvName.setText(restaurant.getName());
@@ -112,7 +112,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.with(viewHolderTopRestaurant.ivImage.getContext()).load(uri).into(viewHolderTopRestaurant.ivImage);
+                    Picasso.get().load(uri).into(viewHolderTopRestaurant.ivImage);
                 }
             });
             viewHolderTopRestaurant.tvName.setText(restaurant.getName());

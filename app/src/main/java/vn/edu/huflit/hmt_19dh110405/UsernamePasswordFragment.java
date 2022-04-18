@@ -136,6 +136,8 @@ public class UsernamePasswordFragment extends Fragment {
                                         user.put("firstname",firstname);
                                         user.put("lastname",lastname);
                                         user.put("address",address);
+                                        user.put("latitude", latitude);
+                                        user.put("longitude", longitude);
                                         user.put("email",email);
                                         user.put("mobile", mobile);
                                         databaseReference.child("users").child(userID).setValue(user)

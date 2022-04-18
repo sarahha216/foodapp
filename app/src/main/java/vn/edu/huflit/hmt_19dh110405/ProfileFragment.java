@@ -114,7 +114,7 @@ public class ProfileFragment extends Fragment {
 
 
                 Log.d("Bug", user.toString());
-                edtName.setText(user.getFirstName() + " " + user.getLastName());
+                edtName.setText(user.getFirstname() + " " + user.getLastname());
 
                 edtEmail.setText(user.getEmail());
                 edtMobile.setText(user.getMobile());

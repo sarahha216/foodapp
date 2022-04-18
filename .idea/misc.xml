@@ -3,34 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/bg_green_border_button.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/bg_green_button.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/bg_green_corner_button.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/bg_red_border_button.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/border_btn.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.15925925925925927" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/ic_baseline_star_rate_24.xml" value="0.25833333333333336" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/drawable/side_nav_bar.xml" value="0.25435897435897437" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/activity_change_password.xml" value="0.264" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/activity_main.xml" value="0.23020833333333332" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/activity_sign_in.xml" value="0.4" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/activity_sign_up.xml" value="0.2421875" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/activity_welcome.xml" value="0.264" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_address.xml" value="0.2421875" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_fullname.xml" value="0.2421875" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_home.xml" value="0.2421875" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_logout.xml" value="0.2562814070351759" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_order.xml" value="0.2421875" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_profile.xml" value="0.13333333333333333" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_restaurant.xml" value="0.1" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_top_food.xml" value="0.1" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_top_restaurant.xml" value="0.152" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/fragment_username_password.xml" value="0.23802083333333332" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/nav_header_main.xml" value="0.2421875" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/layout/row_top_restaurant.xml" value="0.176" />
-        <entry key="..\:/HUFLIT/demoAndroid/HMT_19DH110405/app/src/main/res/menu/main_menu.xml" value="0.2421875" />
+        <entry key="..\:/HUFLIT/demoAndroid/ver2.3/HMT_19DH110405/app/src/main/res/layout/activity_change_password.xml" value="0.2421875" />
+        <entry key="..\:/HUFLIT/demoAndroid/ver2.3/HMT_19DH110405/app/src/main/res/layout/fragment_logout.xml" value="0.23802083333333332" />
       </map>
     </option>
   </component>

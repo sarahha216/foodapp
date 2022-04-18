@@ -3,13 +3,14 @@ package vn.edu.huflit.hmt_19dh110405.Model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    String firstname, lastname, email, address, lattitude, longitude, mobile;
+    String firstname, lastname, email, address, mobile;
+    double lattitude, longitude;
 
     public User(){
 
     }
 
-    public User(String firstname, String lastname, String email, String address, String lattitude, String longitude, String mobile) {
+    public User(String firstname, String lastname, String email, String address, double lattitude, double longitude, String mobile) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -17,22 +18,6 @@ public class User implements Serializable {
         this.lattitude = lattitude;
         this.longitude = longitude;
         this.mobile = mobile;
-    }
-
-    public String getFirstName() {
-        return firstname;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstname = firstName;
-    }
-
-    public String getLastName() {
-        return lastname;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastname = lastName;
     }
 
     public String getEmail() {
@@ -51,19 +36,35 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    public String getLattitude() {
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public double getLattitude() {
         return lattitude;
     }
 
-    public void setLattitude(String lattitude) {
+    public void setLattitude(double lattitude) {
         this.lattitude = lattitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -74,18 +75,4 @@ public class User implements Serializable {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "firstName='" + firstname + '\'' +
-                ", lastName='" + lastname + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", lattitude='" + lattitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", mobile='" + mobile + '\'' +
-                '}';
-    }
 }
-

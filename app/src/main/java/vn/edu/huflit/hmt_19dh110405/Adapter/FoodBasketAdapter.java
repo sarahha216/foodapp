@@ -65,7 +65,7 @@ public class FoodBasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(viewHolderFoodBasket.ivImage.getContext()).load(uri).into(viewHolderFoodBasket.ivImage);
+                Picasso.get().load(uri).into(viewHolderFoodBasket.ivImage);
             }
         });
 

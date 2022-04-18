@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
@@ -25,6 +26,7 @@ import com.google.android.material.textfield.TextInputEditText;
  * create an instance of this fragment.
  */
 public class AddressFragment extends Fragment {
+
     TextInputEditText tvAddress, tvMobile;
     Button btnNext;
     NavController navController;
@@ -86,22 +88,24 @@ public class AddressFragment extends Fragment {
         btnNext = view.findViewById(R.id.btnNext);
         btnNext.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(tvAddress.getText()) && !TextUtils.isEmpty(tvMobile.getText())){
+                LatLng latLng = LocationServiceTask.getLatLngFromAddress(getContext(), tvAddress.getText().toString());
+                if(latLng!=null){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("address", tvAddress.getText().toString());
+                    bundle.putDouble("latitude", latLng.latitude);
+                    bundle.putDouble("longitude", latLng.longitude);
+                    bundle.putString("mobile", tvMobile.getText().toString());
+                    bundle.putString("firstname", getArguments().getString("firstname"));
+                    bundle.putString("lastname", getArguments().getString("lastname"));
+                    navController.navigate(R.id.action_addressFragment_to_usernamePasswordFragment, bundle);
+                } else{
+                    Toast.makeText(getContext(), "Nhập địa chỉ chính xác", Toast.LENGTH_SHORT).show();
+                }
 
-//            LatLng latLng = LocationServiceTask.getLatLngFromAddress(getContext(), tvAddress.getText().toString());
-            Bundle bundle = new Bundle();
-            bundle.putString("address", tvAddress.getText().toString());
-//            bundle.putDouble("latitude", latLng.latitude);
-//            bundle.putDouble("longitude", latLng.longitude);
-            bundle.putString("mobile", tvMobile.getText().toString());
-            bundle.putString("firstname", getArguments().getString("firstname"));
-            bundle.putString("lastname", getArguments().getString("lastname"));
-
-            navController.navigate(R.id.action_addressFragment_to_usernamePasswordFragment, bundle);}
-            else{
+            }else{
                 Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
 //    @Override
@@ -122,11 +126,10 @@ public class AddressFragment extends Fragment {
 //        if (requestCode == PermissionTask.LOCATION_SERVICE_REQUEST_CODE && grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 //            getLastLocation(getActivity());
 //        }
-//
 //        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 //    }
+//
 //    public void getLastLocation(Context context) {
 //
 //    }
-
 }

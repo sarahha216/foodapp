@@ -7,12 +7,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFoodBasket"
+        android:id="@+id/rvOrderFinished"
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/row_food_basket"
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/row_order_finished"
+        />
 </FrameLayout>

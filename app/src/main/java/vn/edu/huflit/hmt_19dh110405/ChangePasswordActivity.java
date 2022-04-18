@@ -53,8 +53,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

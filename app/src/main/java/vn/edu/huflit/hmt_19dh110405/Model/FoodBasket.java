@@ -3,6 +3,7 @@ package vn.edu.huflit.hmt_19dh110405.Model;
 public class FoodBasket extends Food{
     public int quantity;
     public double sum;
+    public Food food;
 
     public FoodBasket() {
         super();
@@ -40,7 +41,21 @@ public class FoodBasket extends Food{
         }
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
+    public void setSum(double sum) {
+        this.sum = sum;
+    }
+
+    public Food getFood() {
+        return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
 
     public double getSum() {
         return sum ;
@@ -62,4 +77,3 @@ public class FoodBasket extends Food{
     }
 
 }
-
