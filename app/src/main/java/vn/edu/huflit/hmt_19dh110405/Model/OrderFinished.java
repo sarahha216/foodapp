@@ -3,9 +3,9 @@ package vn.edu.huflit.hmt_19dh110405.Model;
 import java.util.List;
 
 public class OrderFinished {
-    String orderID;
-    String orderDate;
-    String orderSum;
+    public String orderID;
+    public String orderDate;
+    public String orderSum;
     int orderStatus;
     String userUID;
     List<FoodBasket> foodBaskets;

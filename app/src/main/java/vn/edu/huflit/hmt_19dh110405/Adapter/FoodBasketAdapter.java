@@ -23,60 +23,49 @@ import vn.edu.huflit.hmt_19dh110405.R;
 
 public class FoodBasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public interface OnFoodBasketItemClickListener {
-        void onFoodBasketItemListener(FoodBasket foodBasket);
-    }
-
     public class ViewHolderFoodBasket extends RecyclerView.ViewHolder {
-        TextView tvName, tvAddress, tvOpenHour, tvID, tvDate, tvUserName;
-        ImageView ivImage;
+        TextView tvName, tvPrice, tvQuantity, tvSum;
+        View view;
 
         public ViewHolderFoodBasket(View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tvName);
-            ivImage = itemView.findViewById(R.id.ivImage);
-            tvAddress = itemView.findViewById(R.id.tvAddress);
-            tvOpenHour = itemView.findViewById(R.id.tvOpenHour);
-            tvID = itemView.findViewById(R.id.tvID);
-            tvDate = itemView.findViewById(R.id.tvDate);
-            tvUserName = itemView.findViewById(R.id.tvUserName);
+            view = itemView.findViewById(R.id.view);
+            tvName = view.findViewById(R.id.tvFName);
+            tvPrice = view.findViewById(R.id.tvFPrice);
+            tvQuantity = itemView.findViewById(R.id.tvFQuantity);
+            tvSum = itemView.findViewById(R.id.tvFSum);
+
         }
     }
 
+    public FoodBasketAdapter(){
+
+    }
+
+    public FoodBasketAdapter(List<FoodBasket> foods){
+        this.foodBaskets = foods;
+    }
+
     private List<FoodBasket> foodBaskets;
-    private OnFoodBasketItemClickListener onFoodBasketItemClickListener;
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.row_food_basket, parent, false);
+        View view = inflater.inflate(R.layout.layout_foodbasket, parent, false);
         return new ViewHolderFoodBasket(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        FoodBasket foodBasket = foodBaskets.get(position);
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        FoodBasketAdapter.ViewHolderFoodBasket viewHolderFoodBasket = (FoodBasketAdapter.ViewHolderFoodBasket) holder;
-        StorageReference profileRef = storageReference.child("foodBaskets/"+ foodBasket.getImage());
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(viewHolderFoodBasket.ivImage);
-            }
-        });
-
-
+        FoodBasket foodBasket =  foodBaskets.get(position);
+        ViewHolderFoodBasket viewHolderFoodBasket = (ViewHolderFoodBasket) holder;
         viewHolderFoodBasket.tvName.setText(foodBasket.getName());
-        viewHolderFoodBasket.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onFoodBasketItemClickListener.onFoodBasketItemListener(foodBasket);
-            }
-        });
+        viewHolderFoodBasket.tvQuantity.setText(String.valueOf(foodBasket.getQuantity()));
+        viewHolderFoodBasket.tvPrice.setText(String.valueOf(foodBasket.getPrice()));
+        viewHolderFoodBasket.tvSum.setText(String.valueOf(foodBasket.getSum()));
     }
 
     @Override

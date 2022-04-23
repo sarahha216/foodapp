@@ -67,7 +67,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_order_finished, parent, false);
-        return new ViewHolderOrder(view);
+        return new OrderAdapter.ViewHolderOrder(view);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         OrderFinished orderFinished = orderFinisheds.get(position);
         Restaurant restaurant = new Restaurant();
         for (Restaurant restaurant1:restaurants){
-            if (orderFinished.getFoodBaskets().get(0).getFood().getResKey().equals(restaurant1.getResKey())){
+            if (orderFinished.getFoodBaskets().get(0).getResKey().equals(restaurant1.getResKey())){
                 restaurant = restaurant1;
                 break;
             }
@@ -105,9 +105,9 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         });
         viewHolderOrder.tvName.setText(restaurant.getName());
         viewHolderOrder.tvAddress.setText(restaurant.getAddress());
-        viewHolderOrder.tvID.setText(orderFinished.getOrderID());
-        viewHolderOrder.tvDate.setText(orderFinished.getOrderDate());
-        viewHolderOrder.tvSum.setText(orderFinished.getOrderSum());
+        viewHolderOrder.tvID.setText(orderFinished.orderID);
+        viewHolderOrder.tvDate.setText(orderFinished.orderDate);
+        viewHolderOrder.tvSum.setText(orderFinished.orderSum);
 
         viewHolderOrder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

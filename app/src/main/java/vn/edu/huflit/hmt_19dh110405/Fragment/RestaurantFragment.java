@@ -1,5 +1,6 @@
 package vn.edu.huflit.hmt_19dh110405.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import vn.edu.huflit.hmt_19dh110405.Adapter.RestaurantAdapter;
 import vn.edu.huflit.hmt_19dh110405.Model.Restaurant;
 import vn.edu.huflit.hmt_19dh110405.R;
+import vn.edu.huflit.hmt_19dh110405.RestaurantDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -124,6 +126,8 @@ public class RestaurantFragment extends Fragment implements RestaurantAdapter.On
 
     @Override
     public void onRestaurantItemClick(Restaurant restaurant) {
-
+        Intent intent = new Intent(getContext(), RestaurantDetailActivity.class);
+        intent.putExtra("restaurant", restaurant);
+        startActivity(intent);
     }
 }

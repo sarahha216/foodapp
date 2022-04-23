@@ -96,7 +96,6 @@ public class TopRestaurantFragment extends Fragment implements RestaurantAdapter
         rvTopRestaurant.setAdapter(restaurantAdapter);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         rvTopRestaurant.setLayoutManager(layoutManager);
-        rvTopRestaurant.addItemDecoration(new DividerItemDecoration(getContext(), GridLayoutManager.VERTICAL));
         fDatabase = FirebaseDatabase.getInstance();
         reference = fDatabase.getReference();
 
@@ -107,13 +106,14 @@ public class TopRestaurantFragment extends Fragment implements RestaurantAdapter
                 restaurants.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Restaurant restaurant = dataSnapshot.getValue(Restaurant.class);
-                    if (restaurant.rate>=2){
-                        restaurants.add(restaurant);
-                    }
+                    restaurants.add(restaurant);
+                }
+                Collections.sort(restaurants, Comparator.comparing(Restaurant::getRate).reversed());
+                for (int i = restaurants.size()-1; restaurants.size()>3; i--){
+                    restaurants.remove(i);
                 }
                 Collections.sort(restaurants, Comparator.comparing(Restaurant::getRate));
                 restaurantAdapter.notifyDataSetChanged();
-
             }
 
             @Override
