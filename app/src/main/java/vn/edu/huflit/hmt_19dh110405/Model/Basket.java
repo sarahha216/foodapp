@@ -34,7 +34,8 @@ public class Basket implements Serializable {
         totalItem = 0;
         for (FoodBasket foodBasket : foods.values()) {
             totalPrice += (foodBasket.price * foodBasket.quantity);
-            totalItem += foodBasket.quantity;
+            //totalItem += foodBasket.quantity;
+            totalItem+=1;
         }
     }
 
